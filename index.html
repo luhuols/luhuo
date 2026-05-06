@@ -41,6 +41,11 @@
         .report-links a { margin: 0 0.8rem; }
         .scale-diagram { background: #0f1118; border-radius: 20px; padding: 0.5rem; margin: 1rem 0; text-align: center; }
         .email-card { background: #1a1d27; border-left: 4px solid #f5a623; }
+        .novel-card { background: linear-gradient(135deg, #2a1f1a 0%, #3a2a1f 100%); border-radius: 24px; padding: 1.2rem 1.5rem; margin: 2rem 0; border: 1px solid #f5a623; }
+        .novel-card h3 { margin: 0 0 0.5rem 0; display: flex; gap: 0.5rem; align-items: center; }
+        .novel-buttons { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .novel-btn { background: #f5a623; color: #0a0c12; padding: 0.4rem 1rem; border-radius: 40px; font-weight: bold; display: inline-block; transition: 0.2s; }
+        .novel-btn:hover { background: #ffb347; transform: scale(0.98); }
         @keyframes pulse {
             0% { opacity: 0.4; filter: drop-shadow(0 0 0px #f5a623); }
             100% { opacity: 1; filter: drop-shadow(0 0 8px #f5a623); }
@@ -66,6 +71,10 @@
         .reaching-hand { animation: reachUp 1s ease-in-out infinite; transform-origin: 195px 182px; }
         .lifting-person { animation: liftBody 1s ease-in-out infinite; }
         .counter { margin-top: 1rem; font-size: 0.7rem; color: #8a8e9c; display: inline-block; background: #1e212b; padding: 0.2rem 0.8rem; border-radius: 40px; }
+        @media (max-width: 640px) {
+            .hero-quote { font-size: 1rem; padding: 1rem; }
+            .novel-buttons { flex-direction: column; align-items: center; }
+        }
     </style>
 </head>
 <body>
@@ -95,8 +104,26 @@
         <p>不是你不够努力。这些痛感的背后，是一条隐形的<strong>“斩杀线”</strong>——系统在你不注意时，把一批又一批人推下深渊。</p>
     </div>
 
+    <!-- 小说入口卡片（醒目前置） -->
+    <div class="novel-card">
+        <h3>📖 正在热更 · 每日新篇</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+            <div>
+                <strong>🔥 《炉火五千年》</strong><br>
+                华夏斩杀线简史 · 每日一篇<br>
+                <a href="huaxia.html" class="novel-btn">→ 阅读</a>
+            </div>
+            <div>
+                <strong>🚀 《星际观察者手记》</strong><br>
+                临界窗口文明观测报告 · 每日一篇<br>
+                <a href="interstellar.html" class="novel-btn">→ 阅读</a>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: #f5cf9f;">📅 每晚更新，欢迎追更</p>
+    </div>
+
     <h2>📐 斩杀线 · 铁的规律</h2>
-    <!-- 动态刻度图 -->
+    <!-- 动态刻度图 SVG -->
     <div class="scale-diagram">
         <svg width="100%" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; display: inline-block;">
             <rect width="400" height="240" fill="#0f1118" rx="12" />
@@ -188,10 +215,11 @@
 
     <h2>🌏 历史验证 · 华夏为何扛得最久？</h2>
     <ul>
-        <li>周：“天命靡常，惟德是辅”</li>
-        <li>汉：科举——底层逆熵通道</li>
-        <li>宋：常平仓、王安石变法——公权金融对抗资本</li>
-        <li>当代：脱贫攻坚、医保全覆盖</li>
+        <li>周：“天命靡常，惟德是辅” —— 公心成为统治合法性来源</li>
+        <li>汉：察举制（举孝廉）—— 底层上升通道雏形，逆熵萌芽</li>
+        <li>隋：科举制度化 —— 打破门阀垄断，寒门逆熵通道正式开启</li>
+        <li>宋：常平仓、王安石变法 —— 公权金融对抗资本门阀</li>
+        <li>当代：脱贫攻坚、医保全覆盖 —— 国家规模公心实践</li>
     </ul>
 
     <div class="card">
@@ -219,21 +247,13 @@
 </div>
 
 <script>
-    // 使用 CountAPI 实现简单的访问计数
-    // 命名空间: luhuo_visits
     const COUNTER_KEY = 'luhuo_visits';
     const COUNT_URL = `https://api.countapi.xyz/hit/luhuolukou/${COUNTER_KEY}`;
-    
-    fetch(COUNT_URL)
-        .then(response => response.json())
-        .then(data => {
-            const count = data.value;
-            document.getElementById('visit-counter').innerHTML = `📊 本页访问量：${count}`;
-        })
-        .catch(err => {
-            console.warn('计数器加载失败', err);
-            document.getElementById('visit-counter').innerHTML = '📊 访问量统计中...';
-        });
+    fetch(COUNT_URL).then(r => r.json()).then(d => {
+        document.getElementById('visit-counter').innerHTML = `📊 本页访问量：${d.value}`;
+    }).catch(() => {
+        document.getElementById('visit-counter').innerHTML = '📊 访问量统计中...';
+    });
 </script>
 </body>
-    </html>
+                    </html>

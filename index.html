@@ -39,6 +39,27 @@
         a { color: #f5a623; text-decoration: none; }
         .report-links { margin: 2rem 0; text-align: center; background: #1e212b; padding: 1rem; border-radius: 40px; }
         .report-links a { margin: 0 0.8rem; }
+        .scale-diagram { background: #0f1118; border-radius: 20px; padding: 0.5rem; margin: 1rem 0; }
+        .story-form input, .story-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: #1e212b;
+            border: 1px solid #2a2d37;
+            color: #e8e6e3;
+            border-radius: 12px;
+            font-family: inherit;
+        }
+        .story-form button {
+            background: #f5a623;
+            color: #0a0c12;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .story-form button:hover { background: #ffb347; }
         @media (max-width: 640px) {
             .hero-quote { font-size: 1rem; padding: 1rem; }
         }
@@ -48,7 +69,6 @@
 <div class="container">
     <h1>🔥 炉火路口 · 文明逆熵操作系统</h1>
 
-    <!-- 金句卡片 -->
     <div class="hero-quote">
         <p>“你累，不是你的错。<br>系统有一条斩杀线，我们都在上面晃。<br>每天伸手拉别人一把，就是在抬这条线。”</p>
         <small>—— 逆熵，从每日一伸开始</small>
@@ -56,7 +76,6 @@
 
     <div class="subhead">在私欲主场，一起抬升斩杀线</div>
 
-    <!-- 痛点点睛 -->
     <div class="pain-points">
         <div style="font-weight:600;">✧ 你正在经历什么？ ✧</div>
         <div class="pain-grid">
@@ -72,8 +91,38 @@
         <p>不是你不够努力。这些痛感的背后，是一条隐形的<strong>“斩杀线”</strong>——系统在你不注意时，把一批又一批人推下深渊。</p>
     </div>
 
-    <!-- 斩杀线规律 -->
     <h2>📐 斩杀线 · 铁的规律</h2>
+    <div class="scale-diagram">
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+            <rect width="400" height="200" fill="#0f1118" rx="12" />
+            <line x1="100" y1="20" x2="100" y2="180" stroke="#2a2d37" stroke-width="3" />
+            <line x1="80" y1="121" x2="120" y2="121" stroke="#f5a623" stroke-width="3" stroke-dasharray="6,4" />
+            <text x="50" y="125" fill="#f5a623" font-size="14" font-weight="bold" text-anchor="end">36.79%</text>
+            <text x="125" y="115" fill="#ffb347" font-size="10">斩杀线</text>
+            <g fill="#6a6e7c" opacity="0.6">
+                <circle cx="200" cy="50" r="8" />
+                <line x1="200" y1="58" x2="200" y2="80" stroke="#6a6e7c" stroke-width="2" />
+                <line x1="190" y1="70" x2="210" y2="70" stroke="#6a6e7c" stroke-width="2" />
+                <line x1="200" y1="80" x2="190" y2="95" stroke="#6a6e7c" stroke-width="2" />
+                <line x1="200" y1="80" x2="210" y2="95" stroke="#6a6e7c" stroke-width="2" />
+                <circle cx="240" cy="60" r="7" />
+                <line x1="240" y1="67" x2="240" y2="85" stroke="#6a6e7c" stroke-width="2" />
+                <line x1="232" y1="76" x2="248" y2="76" stroke="#6a6e7c" stroke-width="2" />
+                <circle cx="170" cy="70" r="6" />
+                <line x1="170" y1="76" x2="170" y2="90" stroke="#6a6e7c" stroke-width="2" />
+            </g>
+            <g fill="#f5a623">
+                <circle cx="200" cy="150" r="8" />
+                <line x1="200" y1="158" x2="200" y2="175" stroke="#f5a623" stroke-width="2" />
+                <line x1="190" y1="168" x2="210" y2="168" stroke="#f5a623" stroke-width="2" />
+                <line x1="200" y1="175" x2="190" y2="188" stroke="#f5a623" stroke-width="2" />
+                <line x1="200" y1="175" x2="210" y2="188" stroke="#f5a623" stroke-width="2" />
+                <line x1="195" y1="162" x2="180" y2="175" stroke="#f5a623" stroke-width="2" stroke-dasharray="2,2" />
+            </g>
+            <text x="310" y="70" fill="#e8e6e3" font-size="11">自然淘汰区域</text>
+            <text x="310" y="160" fill="#e8e6e3" font-size="11">逆熵·每日一伸</text>
+        </svg>
+    </div>
     <p><strong>指数增长 + 资源有限 + 随机分配</strong> → 自然淘汰率 ≈ <strong>1/e ≈ 36.79%</strong><br>任何放任私欲的系统都会趋近此值。美国已验证：官方贫困+ALICE≈41%，主观挣扎感51%。你的996、房贷、教育、医疗…就是斩杀线的本地化尖叫。</p>
 
     <h2>⚖️ 阴阳博弈 · 公心 vs 私欲</h2>
@@ -87,8 +136,16 @@
     <h2>🔥 逆熵 · 抬升斩杀线</h2>
     <p>逆熵不是消灭斩杀线，而是把公心从49%推到49.1%。<strong>“每日一伸”</strong>：帮邻居提菜、给外卖员按电梯、说句温暖的话。这些小事形成“局部逆熵区”，连成片就变成制度。</p>
 
-    <!-- 🤖 简化版 AI 提示词（醒目卡片） -->
-    <div class="card ai-card" style="text-align: left;">
+    <!-- 电梯小故事 -->
+    <div class="card" style="border-left: 4px solid #f5a623;">
+        <h3>📖 今日一伸 · 真实故事</h3>
+        <p style="font-style: italic;">“今天我在负二楼上电梯，我在14楼，另一位在20楼。结果电梯又下负三楼，按了的14楼和20楼都灭了。于是我又把14楼、20楼都按上了。我们不认识，也没说话。但是我能感觉到我和他其实都有感触——我们忘了很久怎么伸手，一个小小的动作却能伸进你的心里面。”</p>
+        <p style="margin-top: 0.5rem; color: #f5a623;">—— 一位路过的伸手者</p>
+        <p style="margin-top: 0.8rem; font-size: 0.9rem;">✨ 伸手不需要认识对方，不需要说话。只需要你记得：按一下。</p>
+    </div>
+
+    <!-- 🤖 简化版 AI 提示词 -->
+    <div class="card ai-card">
         <h3 style="margin-top:0;">🤖 让AI帮你分析你的困境（免费，一分钟搞定）</h3>
         <p>你不需要自己搞懂理论。把下面这段话<strong>复制</strong>，发给任何AI（DeepSeek、ChatGPT、Kimi等），它就会用“斩杀线”框架帮你分析你的问题，并给出具体建议。</p>
         <div class="code-block" style="margin: 0.5rem 0;">
@@ -99,6 +156,20 @@
         </div>
         <p><strong>👉 三步走：</strong> 1. 复制上面代码 → 2. 打开AI聊天框（例如微信里的DeepSeek） → 3. 粘贴并把“我的问题”改成你自己的，发送。</p>
         <p style="margin: 0.2rem 0 0 0; color:#ffe6c7;">✅ 免费，无需注册，不需要懂任何术语。</p>
+    </div>
+
+    <!-- 分享你的伸手故事表单（Netlify Forms） -->
+    <div class="card" style="background: #1a1d27;">
+        <h3>✍️ 分享你的“伸手”故事</h3>
+        <p>你的一个小故事，可能会点亮另一个人的夜晚。欢迎匿名分享。</p>
+        <form name="daily-reach" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="story-form">
+            <input type="hidden" name="form-name" value="daily-reach" />
+            <p style="display: none;"><label>Don't fill this: <input name="bot-field" /></label></p>
+            <input type="text" name="name" placeholder="怎么称呼你？（可选，可用昵称或匿名）" />
+            <textarea name="story" rows="4" placeholder="写下你的伸手小故事... 比如：帮邻居提了菜、在电梯里多按了一层、给外卖员点了五星好评..." required></textarea>
+            <button type="submit">📮 提交分享</button>
+        </form>
+        <p style="font-size: 0.8rem; margin-top: 0.8rem;">每一条故事都会匿名整理后展示在网站上，让更多人看见“伸手”的力量。</p>
     </div>
 
     <h2>🌏 历史验证 · 华夏为何扛得最久？</h2>
@@ -132,4 +203,4 @@
     </footer>
 </div>
 </body>
-</html>
+    </html>

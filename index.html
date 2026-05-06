@@ -39,7 +39,7 @@
         a { color: #f5a623; text-decoration: none; }
         .report-links { margin: 2rem 0; text-align: center; background: #1e212b; padding: 1rem; border-radius: 40px; }
         .report-links a { margin: 0 0.8rem; }
-        .scale-diagram { background: #0f1118; border-radius: 20px; padding: 0.5rem; margin: 1rem 0; }
+        .scale-diagram { background: #0f1118; border-radius: 20px; padding: 0.5rem; margin: 1rem 0; text-align: center; }
         .story-form input, .story-form textarea {
             width: 100%;
             padding: 0.8rem;
@@ -76,6 +76,7 @@
 
     <div class="subhead">在私欲主场，一起抬升斩杀线</div>
 
+    <!-- 痛点卡片 -->
     <div class="pain-points">
         <div style="font-weight:600;">✧ 你正在经历什么？ ✧</div>
         <div class="pain-grid">
@@ -92,8 +93,9 @@
     </div>
 
     <h2>📐 斩杀线 · 铁的规律</h2>
+    <!-- 刻度图 SVG -->
     <div class="scale-diagram">
-        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: 0 auto;">
+        <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; display: inline-block;">
             <rect width="400" height="200" fill="#0f1118" rx="12" />
             <line x1="100" y1="20" x2="100" y2="180" stroke="#2a2d37" stroke-width="3" />
             <line x1="80" y1="121" x2="120" y2="121" stroke="#f5a623" stroke-width="3" stroke-dasharray="6,4" />
@@ -158,10 +160,13 @@
         <p style="margin: 0.2rem 0 0 0; color:#ffe6c7;">✅ 免费，无需注册，不需要懂任何术语。</p>
     </div>
 
-    <!-- 分享你的伸手故事表单（Netlify Forms） -->
+    <!-- 分享你的伸手故事表单（Netlify Forms）——人工审核提示 -->
     <div class="card" style="background: #1a1d27;">
         <h3>✍️ 分享你的“伸手”故事</h3>
         <p>你的一个小故事，可能会点亮另一个人的夜晚。欢迎匿名分享。</p>
+        <p style="background: #2a1f1a; padding: 0.5rem; border-radius: 12px; border-left: 3px solid #f5a623; margin-bottom: 1rem;">
+            ⚠️ <strong>人工审核提示</strong>：所有故事提交后需经人工审核，精选后匿名分享。请勿提交无关内容。
+        </p>
         <form name="daily-reach" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="story-form">
             <input type="hidden" name="form-name" value="daily-reach" />
             <p style="display: none;"><label>Don't fill this: <input name="bot-field" /></label></p>
@@ -169,7 +174,7 @@
             <textarea name="story" rows="4" placeholder="写下你的伸手小故事... 比如：帮邻居提了菜、在电梯里多按了一层、给外卖员点了五星好评..." required></textarea>
             <button type="submit">📮 提交分享</button>
         </form>
-        <p style="font-size: 0.8rem; margin-top: 0.8rem;">每一条故事都会匿名整理后展示在网站上，让更多人看见“伸手”的力量。</p>
+        <p style="font-size: 0.8rem; margin-top: 0.8rem;">📌 提交后不会立即公开，我们会精选温暖的故事，匿名整理后展示在网站上。</p>
     </div>
 
     <h2>🌏 历史验证 · 华夏为何扛得最久？</h2>
@@ -203,4 +208,4 @@
     </footer>
 </div>
 </body>
-    </html>
+</html>

@@ -40,26 +40,7 @@
         .report-links { margin: 2rem 0; text-align: center; background: #1e212b; padding: 1rem; border-radius: 40px; }
         .report-links a { margin: 0 0.8rem; }
         .scale-diagram { background: #0f1118; border-radius: 20px; padding: 0.5rem; margin: 1rem 0; text-align: center; }
-        .story-form input, .story-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            background: #1e212b;
-            border: 1px solid #2a2d37;
-            color: #e8e6e3;
-            border-radius: 12px;
-            font-family: inherit;
-        }
-        .story-form button {
-            background: #f5a623;
-            color: #0a0c12;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .story-form button:hover { background: #ffb347; }
+        .email-card { background: #1a1d27; border-left: 4px solid #f5a623; }
         @media (max-width: 640px) {
             .hero-quote { font-size: 1rem; padding: 1rem; }
         }
@@ -160,21 +141,15 @@
         <p style="margin: 0.2rem 0 0 0; color:#ffe6c7;">✅ 免费，无需注册，不需要懂任何术语。</p>
     </div>
 
-    <!-- 分享你的伸手故事表单（Netlify Forms）——人工审核提示 -->
-    <div class="card" style="background: #1a1d27;">
+    <!-- 邮箱投稿方式（替代Netlify表单） -->
+    <div class="card email-card">
         <h3>✍️ 分享你的“伸手”故事</h3>
         <p>你的一个小故事，可能会点亮另一个人的夜晚。欢迎匿名分享。</p>
-        <p style="background: #2a1f1a; padding: 0.5rem; border-radius: 12px; border-left: 3px solid #f5a623; margin-bottom: 1rem;">
-            ⚠️ <strong>人工审核提示</strong>：所有故事提交后需经人工审核，精选后匿名分享。请勿提交无关内容。
+        <p><strong>📧 请发送邮件至：</strong> <a href="mailto:13320205668@163.com?subject=伸手故事投稿&body=写下你的故事...（可匿名）">13320205668@163.com</a><br>
+        邮件标题注明“伸手故事”，内容写上你的故事（可用昵称或匿名）。我们会精选后匿名展示在网站上。</p>
+        <p style="background: #2a1f1a; padding: 0.5rem; border-radius: 12px; border-left: 3px solid #f5a623; margin-top: 1rem;">
+            ⚠️ 人工审核：仅分享温暖真实的故事，请勿提交无关内容。
         </p>
-        <form name="daily-reach" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="story-form">
-            <input type="hidden" name="form-name" value="daily-reach" />
-            <p style="display: none;"><label>Don't fill this: <input name="bot-field" /></label></p>
-            <input type="text" name="name" placeholder="怎么称呼你？（可选，可用昵称或匿名）" />
-            <textarea name="story" rows="4" placeholder="写下你的伸手小故事... 比如：帮邻居提了菜、在电梯里多按了一层、给外卖员点了五星好评..." required></textarea>
-            <button type="submit">📮 提交分享</button>
-        </form>
-        <p style="font-size: 0.8rem; margin-top: 0.8rem;">📌 提交后不会立即公开，我们会精选温暖的故事，匿名整理后展示在网站上。</p>
     </div>
 
     <h2>🌏 历史验证 · 华夏为何扛得最久？</h2>
@@ -208,4 +183,4 @@
     </footer>
 </div>
 </body>
-</html>
+                                </html>

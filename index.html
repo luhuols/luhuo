@@ -11,6 +11,23 @@
         h1, .subhead { text-align: center; }
         h1 { font-size: 2rem; margin-bottom: 0.5rem; }
         .subhead { color: #aaa; margin-bottom: 2rem; border-bottom: 1px solid #2a2c34; padding-bottom: 1rem; }
+        /* 新增金句卡片样式 */
+        .hero-quote {
+            background: linear-gradient(135deg, #1f1a10 0%, #2a2418 100%);
+            border-left: 6px solid #f5a623;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem auto 1.5rem auto;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #ffe6c7;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            max-width: 90%;
+        }
+        .hero-quote p { margin: 0; }
+        .hero-quote small { font-size: 0.9rem; color: #f5a623; display: block; margin-top: 0.5rem; }
         h2 { font-size: 1.6rem; margin: 2rem 0 1rem; border-left: 4px solid #f5a623; padding-left: 0.75rem; }
         h3 { font-size: 1.3rem; margin: 1rem 0 0.5rem; color: #f5cf9f; }
         .pain-points { background: #13161f; border-radius: 24px; padding: 1.5rem; margin: 2rem 0; border: 1px solid #2c2f3a; }
@@ -22,11 +39,21 @@
         a { color: #f5a623; text-decoration: none; }
         .report-links { margin: 2rem 0; text-align: center; background: #1e212b; padding: 1rem; border-radius: 40px; }
         .report-links a { margin: 0 0.8rem; }
+        @media (max-width: 640px) {
+            .hero-quote { font-size: 1rem; padding: 1rem; }
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>🔥 炉火路口 · 文明逆熵操作系统</h1>
+
+    <!-- ★ 最显眼位置的金句卡片 ★ -->
+    <div class="hero-quote">
+        <p>“你累，不是你的错。<br>系统有一条斩杀线，我们都在上面晃。<br>每天伸手拉别人一把，就是在抬这条线。”</p>
+        <small>—— 逆熵，从每日一伸开始</small>
+    </div>
+
     <div class="subhead">在私欲主场，一起抬升斩杀线</div>
 
     <div class="pain-points">

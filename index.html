@@ -30,13 +30,18 @@ a { color: #f5a623; text-decoration: none; }
 .email-card { background: #1a1d27; border-left: 4px solid #f5a623; }
 .novel-card { background: linear-gradient(135deg, #2a1f1a 0%, #3a2a1f 100%); border-radius: 24px; padding: 1.2rem 1.5rem; margin: 2rem 0; border: 1px solid #f5a623; }
 .novel-card h3 { margin: 0 0 0.5rem 0; display: flex; gap: 0.5rem; align-items: center; }
-.novel-buttons { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-.novel-btn { background: #f5a623; color: #0a0c12; padding: 0.4rem 1rem; border-radius: 40px; font-weight: bold; display: inline-block; transition: 0.2s; }
+.novel-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; margin-top: 1rem; }
+.novel-grid > div { flex: 1; min-width: 150px; }
+.novel-btn { background: #f5a623; color: #0a0c12; padding: 0.4rem 1rem; border-radius: 40px; font-weight: bold; display: inline-block; transition: 0.2s; margin-top: 0.3rem; }
 .novel-btn:hover { background: #ffb347; transform: scale(0.98); }
 .manifesto-card { border-left: 4px solid #c0a060; background: linear-gradient(135deg, #1a1d27 0%, #1f1a10 100%); }
 .manifesto-card h3 { color: #c0a060; margin-top: 0; }
 .bronze-btn { background: #c0a060; color: #0a0c12; padding: 0.4rem 1rem; border-radius: 40px; font-weight: bold; display: inline-block; transition: 0.2s; margin-top: 0.5rem; }
 .bronze-btn:hover { background: #d4b87a; transform: scale(0.98); }
+.copyright-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.copyright-table td { padding: 0.5rem 0; border-bottom: 1px solid #2a2d37; }
+.copyright-table td:first-child { color: #f5a623; }
+.copyright-table td:last-child { color: #e8e6e3; text-align: right; }
 @keyframes pulse { 0% { opacity: 0.4; filter: drop-shadow(0 0 0px #f5a623); } 100% { opacity: 1; filter: drop-shadow(0 0 8px #f5a623); } }
 @keyframes shakeAndFall { 0% { transform: translateY(0) rotate(0deg); } 20% { transform: translateY(2px) rotate(1deg); } 40% { transform: translateY(-1px) rotate(-1deg); } 60% { transform: translateY(3px) rotate(1deg); } 80% { transform: translateY(5px) rotate(2deg); opacity: 0.8; } 100% { transform: translateY(8px) rotate(3deg); opacity: 0.5; } }
 @keyframes reachUp { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-12deg); } }
@@ -46,7 +51,7 @@ a { color: #f5a623; text-decoration: none; }
 .reaching-hand { animation: reachUp 1s ease-in-out infinite; transform-origin: 195px 182px; }
 .lifting-person { animation: liftBody 1s ease-in-out infinite; }
 .counter { margin-top: 1rem; font-size: 0.7rem; color: #8a8e9c; display: inline-block; background: #1e212b; padding: 0.2rem 0.8rem; border-radius: 40px; }
-@media (max-width: 640px) { .hero-quote { font-size: 1rem; padding: 1rem; } .novel-buttons { flex-direction: column; align-items: center; } }
+@media (max-width: 640px) { .hero-quote { font-size: 1rem; padding: 1rem; } .novel-grid { flex-direction: column; } }
 </style>
 </head>
 <body>
@@ -84,19 +89,24 @@ a { color: #f5a623; text-decoration: none; }
 <p>不是你不够努力。这些痛感的背后，是一条隐形的<strong>"斩杀线"</strong>——系统在你不注意时，把一批又一批人推下深渊。</p>
 </div>
 
-<!-- 小说入口卡片 -->
+<!-- 小说入口卡片（三大宇宙） -->
 <div class="novel-card">
-<h3>📖 正在热更 · 每日新篇</h3>
-<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+<h3>📖 炉火宇宙 · 三重叙事</h3>
+<div class="novel-grid">
 <div>
 <strong>🔥 《炉火五千年》</strong><br>
-华夏斩杀线简史 · 每日一篇<br>
+<span style="font-size:0.8rem; color:#ccc;">华夏斩杀线简史 · 每日一篇</span><br>
 <a href="luhuo5000-index.html" class="novel-btn">→ 阅读</a>
 </div>
 <div>
 <strong>🚀 《星际观察者手记》</strong><br>
-临界窗口文明观测报告 · 每日一篇<br>
+<span style="font-size:0.8rem; color:#ccc;">临界窗口文明观测报告 · 每日一篇</span><br>
 <a href="dh7721-index.html" class="novel-btn">→ 阅读</a>
+</div>
+<div>
+<strong>⚔️ 《双生劫·万道归心》</strong><br>
+<span style="font-size:0.8rem; color:#ccc;">天道盟宇宙 · 正史前传</span><br>
+<a href="wandaoguixin-index.html" class="novel-btn">→ 即将上线</a>
 </div>
 </div>
 <p style="margin-top: 1rem; font-size: 0.8rem; color: #f5cf9f;">📅 每晚更新，欢迎追更</p>
@@ -209,6 +219,31 @@ a { color: #f5a623; text-decoration: none; }
 <h2>📦 路口计划 · 开源、免费、无领袖</h2>
 <p>✅ 无版权（CC0）<br>✅ 不设门槛、不收钱、不搞宗教<br>✅ 任何人都可以复制、改编、再发布<br>✅ 没有教主，只有炉火</p>
 
+<!-- 版权声明 -->
+<div class="card" style="border-left: 4px solid #f5a623;">
+<h3 style="margin-top:0;">⚖️ 版权声明</h3>
+<p style="font-size: 0.9rem; color: #ccc; margin-bottom: 1rem;">这个网站上的内容分为两类，请在使用前确认：</p>
+<table class="copyright-table">
+<tr>
+<td>📚 小说连载（炉火五千年 · 星际观察者手记 · 双生劫·万道归心 · 白银挽歌）</td>
+<td><strong>保留版权</strong> · 未经许可不得转载、改编或商用</td>
+</tr>
+<tr>
+<td>🧠 文明逆熵操作系统（世界观设定）</td>
+<td><strong>CC0 · 完全开源</strong> · 可自由复制、改编、再发布</td>
+</tr>
+<tr>
+<td>📜 新纪元宣言</td>
+<td><strong>CC0 · 完全开源</strong> · 可自由传抄、翻译、再发布</td>
+</tr>
+<tr>
+<td>📋 华夏/全球文明解剖报告</td>
+<td><strong>CC0 · 完全开源</strong> · 可自由用于研究、教学、传播</td>
+</tr>
+</table>
+<p style="margin-top: 1rem; font-size: 0.9rem; color: #f5a623; text-align: center;"><strong>故事是我们的，思想是全人类的。</strong></p>
+</div>
+
 <div class="report-links">
 📚 深度报告：<a href="report_china.html">华夏文明解剖报告</a> | <a href="report_global.html">全球文明解剖报告</a>
 </div>
@@ -236,4 +271,4 @@ document.getElementById('visit-counter').innerHTML = '📊 访问量统计中...
 });
 </script>
 </body>
-                                                               </html>
+</html>

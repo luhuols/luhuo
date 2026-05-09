@@ -22,6 +22,52 @@ a { color: #f5a623; text-decoration: none; }
 .episode-nav { display: flex; justify-content: space-between; margin: 1.5rem 0; }
 .episode-nav a { background: #1e212b; padding: 0.4rem 1.2rem; border-radius: 30px; font-size: 0.9rem; }
 .update-note { background: #2a1f1a; padding: 0.5rem; border-radius: 12px; text-align: center; margin: 1rem 0; }
+.tts-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #0f1118;
+    border-top: 1px solid #2a2d37;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.tts-btn {
+    background: #c0a060;
+    color: #0a0c12;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+.tts-btn:hover { background: #d4b87a; }
+.tts-btn.playing { background: #8b0000; color: #e8e6e3; }
+.tts-speed {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #aaa;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+.tts-speed input[type="range"] {
+    width: 80px;
+    accent-color: #c0a060;
+}
+.tts-status {
+    color: #6a6e7c;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
 </style>
 </head>
 <body>
@@ -83,5 +129,123 @@ a { color: #f5a623; text-decoration: none; }
 星际观察者手记 · 每日更新
 </footer>
 </div>
+<div class="tts-bar" id="ttsBar" style="display:none;">
+    <button class="tts-btn" id="ttsBtn" onclick="toggleTTS()">🔊 朗读</button>
+    <div class="tts-speed">
+        <span>语速</span>
+        <input type="range" id="ttsRate" min="0.5" max="3" step="0.25" value="1" oninput="updateRate()">
+        <span id="ttsRateLabel">1x</span>
+    </div>
+    <span class="tts-status" id="ttsStatus"></span>
+</div>
+let tts = null;
+let ttsUtterance = null;
+let ttsPlaying = false;
+let ttsPaused = false;
+let ttsText = '';
+let ttsChunks = [];
+let ttsChunkIndex = 0;
+
+function initTTS() {
+    if (!('speechSynthesis' in window)) return;
+    // 收集页面正文
+    const container = document.querySelector('.episode') || document.querySelector('.container');
+    if (!container) return;
+    ttsText = container.innerText.trim();
+    if (ttsText.length < 50) return;
+    // 按句子拆分
+    ttsChunks = ttsText.match(/[^。！？；\n]+[。！？；\n]?/g) || [ttsText];
+    document.getElementById('ttsBar').style.display = 'flex';
+}
+
+function toggleTTS() {
+    if (!ttsText) return;
+    const btn = document.getElementById('ttsBtn');
+    if (ttsPlaying && !ttsPaused) {
+        // 暂停
+        window.speechSynthesis.pause();
+        ttsPaused = true;
+        ttsPlaying = false;
+        btn.textContent = '▶ 继续';
+        btn.classList.remove('playing');
+        document.getElementById('ttsStatus').textContent = '已暂停';
+    } else if (ttsPaused) {
+        // 继续
+        window.speechSynthesis.resume();
+        ttsPaused = false;
+        ttsPlaying = true;
+        btn.textContent = '⏸ 暂停';
+        btn.classList.add('playing');
+        document.getElementById('ttsStatus').textContent = '正在朗读...';
+    } else {
+        // 开始
+        ttsChunkIndex = 0;
+        ttsPlaying = true;
+        ttsPaused = false;
+        btn.textContent = '⏸ 暂停';
+        btn.classList.add('playing');
+        document.getElementById('ttsStatus').textContent = '正在朗读...';
+        speakNextChunk();
+    }
+}
+
+function speakNextChunk() {
+    if (ttsChunkIndex >= ttsChunks.length) {
+        // 读完
+        ttsPlaying = false;
+        ttsPaused = false;
+        const btn = document.getElementById('ttsBtn');
+        btn.textContent = '🔊 朗读';
+        btn.classList.remove('playing');
+        document.getElementById('ttsStatus').textContent = '朗读完毕';
+        return;
+    }
+    const utterance = new SpeechSynthesisUtterance(ttsChunks[ttsChunkIndex]);
+    utterance.rate = parseFloat(document.getElementById('ttsRate').value);
+    utterance.lang = 'zh-CN';
+    utterance.onend = () => {
+        ttsChunkIndex++;
+        speakNextChunk();
+    };
+    utterance.onerror = (e) => {
+        if (e.error !== 'interrupted') {
+            ttsChunkIndex++;
+            speakNextChunk();
+        }
+    };
+    window.speechSynthesis.speak(utterance);
+    ttsUtterance = utterance;
+    document.getElementById('ttsStatus').textContent = `正在朗读... (${ttsChunkIndex + 1}/${ttsChunks.length})`;
+}
+
+function updateRate() {
+    const rate = document.getElementById('ttsRate').value;
+    document.getElementById('ttsRateLabel').textContent = rate + 'x';
+    // 如果正在播放，重新开始当前段落以应用新语速
+    if (ttsPlaying && !ttsPaused) {
+        window.speechSynthesis.cancel();
+        // 重新读当前段落
+        const utterance = new SpeechSynthesisUtterance(ttsChunks[ttsChunkIndex]);
+        utterance.rate = parseFloat(rate);
+        utterance.lang = 'zh-CN';
+        utterance.onend = () => {
+            ttsChunkIndex++;
+            speakNextChunk();
+        };
+        utterance.onerror = (e) => {
+            if (e.error !== 'interrupted') {
+                ttsChunkIndex++;
+                speakNextChunk();
+            }
+        };
+        window.speechSynthesis.speak(utterance);
+        ttsUtterance = utterance;
+    }
+}
+
+// 页面加载时初始化
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initTTS, 500);
+});
 </body>
 </html>
